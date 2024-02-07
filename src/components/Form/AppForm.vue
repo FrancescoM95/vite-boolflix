@@ -7,6 +7,7 @@ export default {
     data: () => ({
         currentValue: '',
         baseUriMovie: 'https://api.themoviedb.org/3/search/movie?query=',
+        baseUriTv: 'https://api.themoviedb.org/3/search/tv?query=',
         api_keys: '&language=it-IT&api_key=affd5dce05723e00eba8a879024625c8',
     }),
     components: { FormImput },
@@ -15,15 +16,22 @@ export default {
             this.currentValue = searchText
         },
         sendForm() {
-            axios.get(this.currentURL).then(res => {
+            axios.get(this.currentURLMovie).then(res => {
                 store.movies = res.data.results;
                 console.log(this.filteredMovies)
+            });
+            axios.get(this.currentURLTv).then(res => {
+                store.tvSeries = res.data.results;
+                console.log(this.filteredTvSeries)
             })
         }
     },
     computed: {
-        currentURL() {
+        currentURLMovie() {
             return this.baseUriMovie + this.currentValue + this.api_keys
+        },
+        currentURLTv() {
+            return this.baseUriTv + this.currentValue + this.api_keys
         },
         filteredMovies() {
             return store.movies.map(movie => {
@@ -32,6 +40,16 @@ export default {
                     "original title": movie.original_title,
                     "language": movie.original_language,
                     "vote": movie.vote_average
+                };
+            })
+        },
+        filteredTvSeries() {
+            return store.tvSeries.map(tvSerie => {
+                return {
+                    "title": tvSerie.name,
+                    "original title": tvSerie.original_name,
+                    "language": tvSerie.original_language,
+                    "vote": tvSerie.vote_average
                 };
             })
         }

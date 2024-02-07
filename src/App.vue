@@ -18,4 +18,9 @@ export default {
 body {
   background-color: #000;
 }
+
+img {
+  max-width: 100%;
+  display: block;
+}
 </style>

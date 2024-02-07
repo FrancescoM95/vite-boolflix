@@ -8,9 +8,20 @@ export default {
 
 <template>
     <header>
-        <div>logo</div>
-        <AppForm />
+        <div class="container">
+            <h1>Boolflix</h1>
+            <AppForm />
+        </div>
     </header>
 </template>
   
-<style lang="scss"></style>
+<style lang="scss">
+header {
+    background-color: #141414;
+    padding: 10px 0;
+}
+
+h1 {
+    color: #D40000;
+}
+</style>

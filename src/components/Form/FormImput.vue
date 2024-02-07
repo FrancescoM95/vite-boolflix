@@ -1,6 +1,6 @@
 <script>
 export default {
-    name: 'FormImput',
+    name: 'FormInput',
     data: () => ({
         currentValue: ''
     }),
@@ -10,7 +10,11 @@ export default {
 
 <template>
     <input type="text" class="form-control" placeholder="Cerca..." v-model.trim="currentValue"
-        @keyup="$emit('value-change', currentValue)">
+        @keyup="$emit('value-change', currentValue)" autofocus>
 </template>
   
-<style lang="scss"></style>
+<style lang="scss">
+input {
+    width: 30%;
+}
+</style>

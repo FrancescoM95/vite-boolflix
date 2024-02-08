@@ -8,7 +8,7 @@ export default {
 
 <template>
     <header>
-        <div class="container">
+        <div class="container d-flex justify-content-center gap-5 align-items-center h-100">
             <h1>Boolflix</h1>
             <AppForm />
         </div>
@@ -18,11 +18,11 @@ export default {
 <style lang="scss">
 header {
     background-color: #141414;
-    padding: 10px 0;
-    height: 140px;
+    height: 100px;
 }
 
 h1 {
     color: #D40000;
+    margin: 0;
 }
 </style>

@@ -63,7 +63,7 @@ export default {
 </script>
 
 <template>
-    <form @submit.prevent="sendForm" class="d-flex gap-3 my-3">
+    <form @submit.prevent="sendForm" class="d-flex gap-3 w-50">
         <FormImput @value-change="readValue" />
         <button class="btn btn-outline-danger button">Cerca</button>
     </form>

@@ -13,8 +13,4 @@ export default {
         @keyup="$emit('value-change', currentValue)" autofocus>
 </template>
   
-<style lang="scss">
-input {
-    width: 30%;
-}
-</style>
+<style lang="scss"></style>

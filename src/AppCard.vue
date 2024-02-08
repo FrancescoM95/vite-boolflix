@@ -6,12 +6,13 @@ export default {
     },
     data() {
         return {
-            showDetails: false
+            showDetails: false,
+            langs: ['it', 'en', 'es', 'fr', 'ja', 'ru', 'de', 'zh', 'ko']
         }
     },
     methods: {
         getLangFlag(lang) {
-            return (lang === 'it' || lang === 'en') ? ('../../src/assets/img/' + lang + '.png') : '';
+            return this.langs.includes(lang) ? ('../../src/assets/img/' + lang + '.png') : '';
         },
         getImageUrl(posterPath) {
             return posterPath ? `https://image.tmdb.org/t/p/w342${posterPath}` : 'https://via.placeholder.com/342x513?text=No+Image';

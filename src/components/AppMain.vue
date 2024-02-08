@@ -23,14 +23,14 @@ export default {
     <main>
         <section class="container">
             <h2>Film</h2>
-            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-2">
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
                 <AppCard v-for="movie in movies" :key="movie.id" :production="movie" />
             </div>
         </section>
 
         <section class="container">
             <h2>Serie Tv</h2>
-            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4">
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
                 <AppCard v-for="tvSerie in tvSeries" :key="tvSerie.id" :production="tvSerie" />
             </div>
         </section>
@@ -46,7 +46,7 @@ main {
         text-align: center;
         text-transform: uppercase;
         font-size: 2.5rem;
-        margin-top: 20px;
+        margin: 30px 0;
     }
 }
 </style>

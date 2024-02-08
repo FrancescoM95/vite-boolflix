@@ -40,7 +40,8 @@ export default {
                     "original title": movie.original_title,
                     "language": movie.original_language,
                     "vote": movie.vote_average,
-                    "poster_path": movie.poster_path
+                    "poster_path": movie.poster_path,
+                    "overview": movie.overview
                 };
             })
         },
@@ -51,7 +52,8 @@ export default {
                     "original title": tvSerie.original_name,
                     "language": tvSerie.original_language,
                     "vote": tvSerie.vote_average,
-                    "poster_path": tvSerie.poster_path
+                    "poster_path": tvSerie.poster_path,
+                    "overview": tvSerie.overview
                 };
             })
         }

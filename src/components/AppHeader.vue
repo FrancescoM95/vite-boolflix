@@ -8,7 +8,7 @@ export default {
 
 <template>
     <header>
-        <div class="container d-flex justify-content-center gap-5 align-items-center h-100">
+        <div class="container d-flex justify-content-center align-items-center h-100">
             <h1>Boolflix</h1>
             <AppForm />
         </div>
@@ -23,6 +23,7 @@ header {
 
 h1 {
     color: #D40000;
-    margin: 0;
+    margin-right: 60px;
+    font-size: 3rem;
 }
 </style>

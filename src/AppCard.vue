@@ -47,26 +47,13 @@ export default {
                             :class="{ 'fas fa-star': i <= starsCount, 'far fa-star': i > starsCount }"></i></p>
                 </div>
 
-                <p class="overview">Trama: {{ production.overview }}</p>
+                <p class="overview">Trama: {{ production.overview || ' non disponibile.' }}</p>
             </div>
         </div>
     </div>
 </template>
 
 <style lang="scss">
-.overview {
-    overflow: auto;
-}
-
-h3 {
-    font-size: 1.5rem;
-}
-
-p {
-    margin: 0;
-    font-size: 0.9rem;
-}
-
 #language {
     display: flex;
     align-items: center;
@@ -97,6 +84,21 @@ p {
     padding: 20px;
     opacity: 0;
     transition: opacity 1s;
+
+    .overview {
+        overflow: auto;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        margin: 0;
+        font-size: 0.9rem;
+    }
+
+
 }
 
 .poster-container:hover .overlay {

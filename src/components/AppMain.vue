@@ -46,6 +46,7 @@ main {
         text-align: center;
         text-transform: uppercase;
         font-size: 2.5rem;
+        margin-top: 20px;
     }
 }
 </style>

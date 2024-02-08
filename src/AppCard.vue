@@ -11,7 +11,11 @@ export default {
         getImageUrl(posterPath) {
             return posterPath ? `https://image.tmdb.org/t/p/w342${posterPath}` : 'https://via.placeholder.com/342x513?text=No+Image';
         }
-
+    },
+    computed: {
+        starsCount() {
+            return Math.ceil(this.production.vote_average / 2);
+        }
     }
 }
 </script>
@@ -21,7 +25,7 @@ export default {
         <div id="title">
             <h3>{{ production.title || production.name }}</h3>
         </div>
-        <img :src="getImageUrl(production.poster_path)" :alt="production.title">
+        <img :src="getImageUrl(production.poster_path)" :alt="production.title" class="mb-2">
         <p>Titolo Originale: {{ production.original_title || production.original_name }}</p>
 
         <div id="language">
@@ -29,7 +33,12 @@ export default {
             <p v-if="!getLangFlag(production.original_language)">{{ production.original_language }}</p>
             <img v-else :src="getLangFlag(production.original_language)" :alt="production.original_language">
         </div>
-        <p>Voto: {{ production.vote_average }}</p>
+        <div>
+            <p>Voto: {{ production.vote_average }}/10</p>
+            <p>Stelle:
+                <i v-for="i in 5" :key="i" :class="{ 'fas fa-star': i <= starsCount, 'far fa-star': i > starsCount }"></i>
+            </p>
+        </div>
     </div>
 </template>
 
@@ -40,12 +49,12 @@ h3 {
 
 p {
     margin: 0;
+    font-size: 0.9rem;
 }
 
-
 #title {
-    height: 90px;
-    margin-top: 35px;
+    min-height: 90px;
+    margin-top: 30px;
     display: flex;
     align-items: center;
 }

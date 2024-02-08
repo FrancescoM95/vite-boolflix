@@ -40,18 +40,23 @@ export default {
                     <p v-if="!getLangFlag(production.original_language)">{{ production.original_language }}</p>
                     <img v-else :src="getLangFlag(production.original_language)" :alt="production.original_language">
                 </div>
-                <p>Voto: {{ voteAverage }}/10</p>
-                <p>Stelle:
-                    <i v-for="i in 5" :key="i"
-                        :class="{ 'fas fa-star': i <= starsCount, 'far fa-star': i > starsCount }"></i>
-                </p>
+                <div>
+                    <p>Voto: {{ voteAverage }}/10</p>
+                    <p><i v-for="i in 5" :key="i"
+                            :class="{ 'fas fa-star': i <= starsCount, 'far fa-star': i > starsCount }"></i></p>
+                </div>
 
+                <p class="overview">Trama: {{ production.overview }}</p>
             </div>
         </div>
     </div>
 </template>
 
 <style lang="scss">
+.overview {
+    overflow: auto;
+}
+
 h3 {
     font-size: 1.5rem;
 }
@@ -87,6 +92,7 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 5px;
     padding: 20px;
     opacity: 0;
     transition: opacity 1s;

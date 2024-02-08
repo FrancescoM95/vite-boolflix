@@ -23,7 +23,8 @@ export default {
             axios.get(this.currentURLTv).then(res => {
                 store.tvSeries = res.data.results;
                 console.log(this.filteredTvSeries)
-            })
+            });
+
         }
     },
     computed: {

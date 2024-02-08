@@ -19,6 +19,7 @@ export default {
 header {
     background-color: #141414;
     padding: 10px 0;
+    height: 140px;
 }
 
 h1 {

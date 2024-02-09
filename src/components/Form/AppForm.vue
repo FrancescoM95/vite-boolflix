@@ -16,6 +16,9 @@ export default {
             this.currentValue = searchText
         },
         sendForm() {
+            if (!this.currentValue) {
+                return
+            }
             axios.get(this.currentURLMovie)
                 .then(movieResponse => {
                     store.movies = movieResponse.data.results;

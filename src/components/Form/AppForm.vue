@@ -16,15 +16,23 @@ export default {
             this.currentValue = searchText
         },
         sendForm() {
-            axios.get(this.currentURLMovie).then(res => {
-                store.movies = res.data.results;
-                console.log(this.filteredMovies)
-            });
-            axios.get(this.currentURLTv).then(res => {
-                store.tvSeries = res.data.results;
-                console.log(this.filteredTvSeries)
-            });
+            axios.get(this.currentURLMovie)
+                .then(movieResponse => {
+                    store.movies = movieResponse.data.results;
+                    console.log('Movies:', this.filteredMovies);
+                })
+                .catch(error => {
+                    console.error('Err:', error);
+                });
 
+            axios.get(this.currentURLTv)
+                .then(tvResponse => {
+                    store.tvSeries = tvResponse.data.results;
+                    console.log('TV Series:', this.filteredTvSeries);
+                })
+                .catch(error => {
+                    console.error('Err:', error);
+                });
         }
     },
     computed: {
@@ -37,6 +45,7 @@ export default {
         filteredMovies() {
             return store.movies.map(movie => {
                 return {
+                    id: movie.id,
                     title: movie.title,
                     originalTitle: movie.original_title,
                     language: movie.original_language,
@@ -49,6 +58,7 @@ export default {
         filteredTvSeries() {
             return store.tvSeries.map(tvSerie => {
                 return {
+                    id: tvSerie.id,
                     title: tvSerie.name,
                     originalTitle: tvSerie.original_name,
                     language: tvSerie.original_language,

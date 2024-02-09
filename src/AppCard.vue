@@ -7,7 +7,9 @@ export default {
     data() {
         return {
             showDetails: false,
-            langs: ['it', 'en', 'es', 'fr', 'ja', 'ru', 'de', 'zh', 'ko']
+            langs: ['it', 'en', 'es', 'fr', 'ja', 'ru', 'de', 'zh', 'ko'],
+            baseUri: 'https://image.tmdb.org/t/p/w342',
+            placeholder: 'https://via.placeholder.com/342x513?text=No+Image'
         }
     },
     methods: {
@@ -15,7 +17,7 @@ export default {
             return this.langs.includes(lang) ? ('../../src/assets/img/' + lang + '.png') : '';
         },
         getImageUrl(posterPath) {
-            return posterPath ? `https://image.tmdb.org/t/p/w342${posterPath}` : 'https://via.placeholder.com/342x513?text=No+Image';
+            return posterPath ? `${this.baseUri}${posterPath}` : `${this.placeholder}`;
         }
     },
     computed: {
@@ -23,7 +25,7 @@ export default {
             return Math.ceil(this.production.vote_average / 2);
         },
         voteAverage() {
-            return Math.floor(this.production.vote_average);
+            return Math.ceil(this.production.vote_average);
         }
     }
 }
@@ -32,7 +34,7 @@ export default {
 <template>
     <div class="col text-center">
         <div class="poster-container" @mouseover="showDetails = true" @mouseleave="showDetails = false">
-            <img :src="getImageUrl(production.poster_path)" :alt="production.title">
+            <img :src="getImageUrl(production.poster_path)" :alt="production.title" class="poster">
             <div class="overlay" v-if="showDetails">
                 <h3>{{ production.title || production.name }}</h3>
                 <p>Titolo Originale: {{ production.original_title || production.original_name }}</p>
@@ -43,8 +45,11 @@ export default {
                 </div>
                 <div>
                     <p>Voto: {{ voteAverage }}/10</p>
-                    <p><i v-for="i in 5" :key="i"
-                            :class="{ 'fas fa-star': i <= starsCount, 'far fa-star': i > starsCount }"></i></p>
+                    <p>
+                        <i v-for="i in 5" :key="i"
+                            :class="{ 'fas fa-star': i <= starsCount, 'far fa-star': i > starsCount }">
+                        </i>
+                    </p>
                 </div>
 
                 <p class="overview">Trama: {{ production.overview || ' non disponibile.' }}</p>
@@ -65,6 +70,15 @@ export default {
     }
 }
 
+.poster-container {
+    height: 400px;
+}
+
+.poster {
+    object-fit: cover;
+    height: 100%;
+}
+
 .col {
     position: relative;
 }
@@ -83,7 +97,7 @@ export default {
     gap: 5px;
     padding: 20px;
     opacity: 0;
-    transition: opacity 1s;
+    transition: opacity 0.3s;
 
     .overview {
         overflow: auto;

@@ -9,9 +9,7 @@ export default {
 <template>
     <header>
         <div class="container d-flex justify-content-center align-items-center h-100">
-            <a href="">
-                <h1>Boolflix</h1>
-            </a>
+            <a href="https://fontmeme.com/it/font-netflix/"><img src="https://fontmeme.com/permalink/240417/b56b6dbf16d8b13130b87655a06e056d.png" alt="font-netflix" border="0"></a>
             <AppForm />
         </div>
     </header>
@@ -23,13 +21,8 @@ header {
     height: 100px;
 }
 
-h1 {
-    color: #D40000;
-    margin-right: 60px;
-    font-size: 3rem;
-}
-
 a {
     text-decoration: none;
+    margin-right: 10px;
 }
 </style>
